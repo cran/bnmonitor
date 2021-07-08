@@ -1,7 +1,7 @@
 Package: bnmonitor
 Type: Package
 Title: An Implementation of Sensitivity Analysis in Bayesian Networks
-Version: 0.1.0
+Version: 0.1.1
 Authors@R: c(
     person("Manuele", "Leonelli", email = "manuele.leonelli@ie.edu", role = c("aut","cre")),
     person("Ramsiya", "Ramanathan", email = "ramsiya.ramanathan@studio.unibo.it", role = "aut"),
@@ -11,16 +11,15 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Imports: bnlearn, DiagrammeR, dplyr, ggplot2, gRain, gRbase, graphics,
-        gridExtra, matrixcalc, purrr, RColorBrewer, reshape2, rlang,
-        tidyr
-Suggests: testthat, covr, knitr, rmarkdown
+Imports: bnlearn, dplyr, ggplot2, gRain, gRbase, graphics, matrixcalc,
+        purrr, qgraph, RColorBrewer, reshape2, rlang, tidyr
+Suggests: testthat, knitr, rmarkdown
 NeedsCompilation: no
-Packaged: 2021-02-02 21:19:55 UTC; Manuele.Leonelli
+Packaged: 2021-07-08 11:47:03 UTC; Manuele.Leonelli
 Author: Manuele Leonelli [aut, cre],
   Ramsiya Ramanathan [aut],
   Rachel Wilkerson [aut]
 Maintainer: Manuele Leonelli <manuele.leonelli@ie.edu>
 Depends: R (>= 3.5.0)
 Repository: CRAN
-Date/Publication: 2021-02-08 10:50:02 UTC
+Date/Publication: 2021-07-08 12:00:05 UTC

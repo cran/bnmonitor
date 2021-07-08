@@ -11,7 +11,7 @@
 NULL
 
 
-#'@importFrom ggplot2 ggplot xlab ylab theme_minimal ggtitle
+#'@importFrom ggplot2 ggplot xlab ylab theme_minimal ggtitle geom_hline
 
 #'
 #' @method plot seq_marg_monitor
@@ -20,7 +20,7 @@ NULL
 #'
 plot.seq_marg_monitor <- function(x,...){
   temp <- data.frame(x= 1:length(x$Seq_Marg_Monitor), y=x$Seq_Marg_Monitor[1:length(x$Seq_Marg_Monitor)])
-  p <- suppressWarnings(ggplot(temp, aes(temp[,1],temp[,2])) + geom_point() +  xlab('Index') + ylab('Standardized Z Statistic') + theme_minimal() + ggtitle(paste0("Marginal Node Monitor for ", x$node.name)))
+  p <- suppressWarnings(ggplot(temp, aes(temp[,1],temp[,2])) + geom_point() +  xlab('Index') + ylab('Standardized Z Statistic') + theme_minimal() + ggtitle(paste0("Marginal Node Monitor for ", x$node.name)) +  geom_hline(yintercept=1.96, linetype="dashed", color = "red") + geom_hline(yintercept=-1.96, linetype="dashed", color = "red"))
   return(p)
 }
 
@@ -38,7 +38,7 @@ plot.CD <- function(x,...){
 
 
 #'
-#'@importFrom ggplot2 ggplot xlab ylab theme_minimal ggtitle
+#'@importFrom ggplot2 ggplot xlab ylab theme_minimal ggtitle geom_hline
 #'@rdname plot
 #'
 #' @method plot seq_cond_monitor
@@ -47,7 +47,7 @@ plot.CD <- function(x,...){
 #'
 plot.seq_cond_monitor <- function(x,...){
   temp <- data.frame(x= 1:length(x$Seq_Cond_Monitor), y=x$Seq_Cond_Monitor[1:length(x$Seq_Cond_Monitor)])
-  p <- suppressWarnings(ggplot(temp, aes(temp[,1],temp[,2])) + geom_point() +  xlab('Index') + ylab('Standardized Z Statistic') + theme_minimal() + ggtitle(paste0("Conditional Node Monitor for ", x$node.name)))
+  p <- suppressWarnings(ggplot(temp, aes(temp[,1],temp[,2])) + geom_point() +  xlab('Index') + ylab('Standardized Z Statistic') + theme_minimal() + ggtitle(paste0("Conditional Node Monitor for ", x$node.name)) +  geom_hline(yintercept=1.96, linetype="dashed", color = "red") + geom_hline(yintercept=-1.96, linetype="dashed", color = "red"))
   return(p)
 }
 
@@ -56,11 +56,9 @@ plot.seq_cond_monitor <- function(x,...){
 #' @importClassesFrom bnlearn bn.fit
 #' @importFrom graphics plot.new
 #' @importFrom bnlearn arcs
-#'@importFrom dplyr "%>%"
 #'@importFrom RColorBrewer brewer.pal
 #'@importFrom grDevices colorRampPalette
-#'@importFrom DiagrammeR create_node_df create_edge_df create_graph render_graph
-#'
+#'@importFrom qgraph qgraph
 #' @method plot global_monitor
 #'@export
 #'@rdname plot
@@ -72,25 +70,26 @@ plot.global_monitor <- function(x, ...){
   max.val <- ceiling(max(abs(x$Global_Monitor$Score)))
   my.palette <- colorRampPalette(my.colors)(max.val)
   node.colors <- my.palette[floor(abs(x$Global_Monitor$Score))]
-  nodes <- create_node_df(n=length(x$DAG$nodes),
-                          type= names(x$DAG$nodes),
-                          label=names(x$DAG$nodes),
-                          style="filled",
-                          fontcolor="black",
-                          fillcolor=node.colors, .name_repair = "unique")
+  qgraph(x$DAG, color = node.colors, ...)
+ # nodes <- create_node_df(n=length(x$DAG$nodes),
+ #                         type= names(x$DAG$nodes),
+ #                          label=names(x$DAG$nodes),
+ #                         style="filled",
+ #                          fontcolor="black",
+ #                         fillcolor=node.colors, .name_repair = "unique")
 
-  from.nodes <- arcs(x$DAG)[,1]
-  to.nodes <- arcs(x$DAG)[,2]
+ # from.nodes <- arcs(x$DAG)[,1]
+ # to.nodes <- arcs(x$DAG)[,2]
 
-  edges <- create_edge_df(from=match(from.nodes,names(x$DAG$nodes)),
-                          to=match(to.nodes,names(x$DAG$nodes)))
+ # edges <- create_edge_df(from=match(from.nodes,names(x$DAG$nodes)),
+ #                         to=match(to.nodes,names(x$DAG$nodes)))
 
-  p <- suppressWarnings(create_graph(
-    nodes_df = nodes,
-    edges_df = edges)
-    %>%  render_graph(title="Global Monitors",layout="tree")
-  )
-  return(p)
+ # p <- suppressWarnings(create_graph(
+ #    nodes_df = nodes,
+#    edges_df = edges)
+  #  %>%  render_graph( ... )
+#  )
+  #return(p)
 }
 
 
@@ -136,8 +135,8 @@ plot.kl <- function(x,...){
 #'@importFrom RColorBrewer brewer.pal
 #'@importFrom graphics plot.new
 #'@importFrom grDevices colorRampPalette
-#'@importFrom DiagrammeR create_node_df create_edge_df create_graph render_graph
 #'@importFrom bnlearn arcs
+#'@importFrom qgraph qgraph
 #'@method plot node_monitor
 #'@rdname plot
 #'@export
@@ -147,8 +146,8 @@ plot.node_monitor <- function(x, which, ...){
   to.nodes <- arcs(x$DAG)[,2]
 
 
-  edges <- create_edge_df(from=match(from.nodes,x$Node_Monitor$node),
-                          to=match(to.nodes,x$Node_Monitor$node))
+  #edges <- create_edge_df(from=match(from.nodes,x$Node_Monitor$node),
+  #                        to=match(to.nodes,x$Node_Monitor$node))
   l <- length(names(x$DAG$nodes))
   my.colors <-  colorRampPalette(brewer.pal(8, "Greens"))(l)
   max.val <- ceiling(max(abs(x$Node_Monitor$marg.z.score[is.finite(x$Node_Monitor$marg.z.score)])))
@@ -157,38 +156,40 @@ plot.node_monitor <- function(x, which, ...){
   my.palette.cond <- colorRampPalette(my.colors)(max.val.cond)
   node.colors <- my.palette[floor(abs(x$Node_Monitor$marg.z.score))+1]
   node.colors.cond <- my.palette.cond[floor(abs(x$Node_Monitor$cond.z.score))+1]
-  nodes <- create_node_df(n=length(x$Node_Monitor$node),
-                          type= x$Node_Monitor$node,
-                          label=x$Node_Monitor$node,
-                          nodes = x$Node_Monitor$node,
-                          style="filled",
-                          fontcolor="black",
-                          fillcolor=node.colors)
+  #nodes <- create_node_df(n=length(x$Node_Monitor$node),
+   #                       type= x$Node_Monitor$node,
+  #                        label=x$Node_Monitor$node,
+  #                        nodes = x$Node_Monitor$node,
+  #                        style="filled",
+  #                        fontcolor="black",
+  #                        fillcolor=node.colors)
 
-  nodes.cond <- create_node_df(n=length(x$Node_Monitor$node),
-                               type= x$Node_Monitor$node,
-                               label=x$Node_Monitor$node,
-                               nodes = x$Node_Monitor$node,
-                               style="filled",
-                               fontcolor="black",
-                               fillcolor=node.colors.cond)
+  #nodes.cond <- create_node_df(n=length(x$Node_Monitor$node),
+  #                             type= x$Node_Monitor$node,
+  #                             label=x$Node_Monitor$node,
+  #                             nodes = x$Node_Monitor$node,
+  #                             style="filled",
+  #                             fontcolor="black",
+  #                             fillcolor=node.colors.cond)
 
 
-  graph <- create_graph(
-    nodes_df = nodes,
-    edges_df = edges)
-  plot <- suppressWarnings(render_graph(graph, title="Marginal Node Monitors",layout = "tree"))
+  #graph <- create_graph(
+  #  nodes_df = nodes,
+  #  edges_df = edges)
+  #plot <- suppressWarnings(render_graph(graph, title="Marginal Node Monitors", ...))
 
-  graph.cond <- create_graph(
-    nodes_df = nodes.cond,
-    edges_df = edges)
-  plot.cond <- suppressWarnings(render_graph(graph.cond, title="Conditional Node Monitors",layout = "tree"))
-  if(which == "marginal"){return(plot)}
-  else if(which=="conditional"){return(plot.cond)}
+  #graph.cond <- create_graph(
+  #  nodes_df = nodes.cond,
+  #  edges_df = edges)
+  #plot.cond <- suppressWarnings(render_graph(graph.cond, title="Conditional Node Monitors", ...))
+  if(which == "marginal"){qgraph(x$DAG, color = node.colors, ...)
+}
+  else if(which=="conditional"){ qgraph(x$DAG, color = node.colors.cond, ...)
+}
 }
 
 
-#' @importFrom ggplot2 ggtitle xlab ylab theme_minimal theme scale_colour_discrete
+#' @importFrom ggplot2 ggtitle xlab ylab theme_minimal theme scale_colour_discrete geom_hline
 #' @method plot seq_pa_ch_monitor
 #'@export
 #'@rdname plot
@@ -198,7 +199,7 @@ plot.seq_pa_ch_monitor <- function(x,...){
   index <- 1:length(x)
   value <- x[1:length(x)]
   data <- data.frame(index=index, value = value)
-  p <- suppressWarnings(ggplot(data, aes(index, value))+ geom_point() + xlab('Relevant sample size') + ylab('Standardized Z Statistic') + theme_minimal())
+  p <- suppressWarnings(ggplot(data, aes(index, value))+ geom_point() + xlab('Relevant sample size') + ylab('Standardized Z Statistic') + theme_minimal() +  geom_hline(yintercept=1.96, linetype="dashed", color = "red") + geom_hline(yintercept=-1.96, linetype="dashed", color = "red"))
   return(p)
 }
 
