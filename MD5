@@ -1,6 +1,6 @@
-36cb55dc33244779d766292551055479 *DESCRIPTION
+6daee333da19a4131fbc665bba52d370 *DESCRIPTION
 29c307619c1f028a5f3a5a759a3b53f1 *NAMESPACE
-4190ed38f42121ab3c298b4b79bb051e *NEWS.md
+322cc2dd24ce55c835a3454c33300938 *NEWS.md
 83de9a105e944d669052ff67f3968a6f *R/CD_distance.R
 a3e1e9c3d491d7e7546dbf05888d06c0 *R/Jeffreys.R
 5e1a12eeda73810062060af456dd9f42 *R/KL.R
@@ -20,7 +20,7 @@ a42e685c634e33d930d0d14a6214d580 *R/diabetes.R
 4f58e326def04b391bca147f849b6b97 *R/fquery.R
 7ca86e1915f2b8c3f71d60503a3adc29 *R/frobenius.R
 8d53485df534d32d48078fb4a05f50b3 *R/global_monitor.R
-cd4427bdf44e1c4e176a9bcbc7c9df0d *R/influential_obs.R
+b384350f1ebe2a3939d7c13073510503 *R/influential_obs.R
 ce86352060d826d0f68c7930ac5d9603 *R/mathmarks.R
 5408b915d17e2a3af43aa0cea6047018 *R/model_pres_cov.R
 052b7774c15ae9e15483b74b8d0dda2e *R/node_monitor.R
@@ -28,14 +28,14 @@ ce86352060d826d0f68c7930ac5d9603 *R/mathmarks.R
 10f4a0bebc885f8fd3ad0c9086e40db9 *R/plot.R
 830bef585912aa77e78f0bc65499bfac *R/print.R
 57d15509f6e072cad41da6a4adf7b6e6 *R/psd_check.R
-a79b18ffd7d6bbd1cfe46ff2ab382762 *R/sensitivity.R
-e9e4acd90104e6b9b5ac3b3719cece37 *R/sensquery.R
+306a8ce2dbf46cd62d8e9a43e169ef1e *R/sensitivity.R
+f05ca12df034d2e85a2d7ac126910962 *R/sensquery.R
 2362ff19e9470484f61a22fc14267d5b *R/seq_node_monitor.R
 b545dd9a27390b8c6197b459b377cca2 *R/standard.R
 e4afcd9e50668e489cbd024d403b24b9 *R/synthetic_bn.R
 d6fa47de21de2b7ee530991727ba2fe8 *R/synthetic_cbn.R
 393767f7da778c1bc654f6c089851d0e *R/travel.R
-7ab2d6508790e65ea5f9484221fe8843 *README.md
+ca9c28f263c487bf6a12d2101bda538f *README.md
 f75ab4886ea93ec7a1c517244a1fe64d *data/cachexia_ci.RData
 016c73c3541480da60dd9acec5a74765 *data/cachexia_data.RData
 335ab05e4ee970b6df877cd58f6a55b6 *data/cachexia_gbn.RData
@@ -112,7 +112,7 @@ ae0a761e37a8df6a81a656d18de6e934 *man/figures/README-unnamed-chunk-8-1.png
 91e25ca23b5ef83bcacbe1c73dfbb77d *man/final_node_monitor.Rd
 80e79249b623277645784eb7a225a02a *man/fire_alarm.Rd
 bc59da3a74fb55e692bc5d95be465cb3 *man/global_monitor.Rd
-b7349fc1717100832353756db2f43593 *man/influential_obs.Rd
+81a1e3c213f5cab285d37541173df16d *man/influential_obs.Rd
 452409c25e46db30d6d5a7ec71514cba *man/mathmarks.Rd
 e087259a5abc71cc2114c3ab9111b2a5 *man/mean_var.Rd
 45f6c32a7700b7defa59d22c75766084 *man/model_pres_cov.Rd
