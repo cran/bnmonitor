@@ -1,4 +1,4 @@
-c15ea7279345b9e135c24f7b72f84e9c *DESCRIPTION
+18b7dc4076bde9a6234c8a0c84b44497 *DESCRIPTION
 a48929f516eedb6702556e9b0a8ed6d5 *NAMESPACE
 da7f730147101c22d4074d0b0a8f528e *R/CD_distance.R
 d67b4bb6d725c251ba128d2aff814c33 *R/Jeffreys.R
@@ -42,7 +42,8 @@ a64a81b611d3e4edd4abe6d79aa12228 *R/sensquery.R
 594fb36471144da7bbcb3d3877a2ce0f *R/synthetic_bn.R
 21c5eae8cd434e0bdd5a571244c8aa20 *R/synthetic_cbn.R
 2c3fe7570723dc9e71253ecf29aea1d2 *R/travel.R
-ba52d04c3b68bf1530b260245104adb0 *README.md
+1ad4d0bb6c4618245980dabf200a5154 *R/zzz.R
+366c6411855f0bbf24cc2fe21deb91aa *README.md
 f75ab4886ea93ec7a1c517244a1fe64d *data/cachexia_ci.RData
 016c73c3541480da60dd9acec5a74765 *data/cachexia_data.RData
 335ab05e4ee970b6df877cd58f6a55b6 *data/cachexia_gbn.RData
@@ -82,6 +83,7 @@ c594300e849b6c3846bdfe0b72efaf83 *man/covariation.Rd
 2b46b7650219ccba5b6721a5f22df69d *man/covariation_matrix.Rd
 0cd46e7c61c500af03e6c26ed108296e *man/diabetes.Rd
 ed39aac0e0eba3ab8fa63b2e589575d1 *man/diameter.Rd
+48e70eb3984a0d094f1dc1a74edca650 *man/dot-onAttach.Rd
 8483ef3fe91adc73f617b0741bdc906a *man/dwi.Rd
 8e02c008994b6fab24bd2a364d4d9491 *man/edge_strength.Rd
 7cbf2043fd479de6be7a4853291ba88c *man/ewi.Rd
