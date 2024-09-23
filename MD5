@@ -1,4 +1,4 @@
-18b7dc4076bde9a6234c8a0c84b44497 *DESCRIPTION
+df8741befad49543c64553616fbb14ff *DESCRIPTION
 a48929f516eedb6702556e9b0a8ed6d5 *NAMESPACE
 da7f730147101c22d4074d0b0a8f528e *R/CD_distance.R
 d67b4bb6d725c251ba128d2aff814c33 *R/Jeffreys.R
@@ -9,7 +9,7 @@ ea99c493c33ca6c80fe5094060dd66f5 *R/asymeasure.R
 2b0f7c3ae789d0a33313e8c5605a8e47 *R/aux_diameter.R
 1b42cbd81f3a8c4ccbaff39e84b09675 *R/aux_gbn.R
 7f51107ffab1a4f198bd9bb062fa411c *R/aux_global.R
-38774f7ada0e69731b5204e514eed9e3 *R/aux_node.R
+17c92ee6277db6da082f430b3ed187fc *R/aux_node.R
 7b488837c9b626b3d307d4abb5641a18 *R/bn2.R
 0f76f876fae88cdd3bacfbb185997bee *R/bnmonitor.R
 9202f3eb45b9021e8340c3c097a467f4 *R/cachexia.R
